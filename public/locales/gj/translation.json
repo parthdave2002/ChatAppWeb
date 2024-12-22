@@ -1,0 +1,28 @@
+{
+    "welcome": "સ્વાગત છે",
+    "description": "વર્ણન"
+    ,
+    "Notification": "સૂચના",
+
+    "Setting": "સેટિંગ",
+    "Theme" : "થીમ",
+    "English" : "અંગ્રેજી",
+    "France" : "ફ્રાન્સ",
+    "Gujarati" : "ગુજરાતી",
+    "Hindi" : "હિન્દી",
+    "German"  : "જર્મન",
+    "Spanish"  : "સ્પેનિશ",
+    
+    "Group": "સમૂહ",
+    "People" : "લોકો",
+    
+    "Name" : "નામ",
+    "Email" : "ઈમેલ",
+    "Contact" : "સંપર્ક કરો",
+    "Current Password" : "વર્તમાન પાસવર્ડ",
+    "New Password" : "નવો પાસવર્ડ",
+    "Confirm Password" : "પાસવર્ડની પુષ્ટિ કરો",
+    "Cancel" : "રદ કરો",
+    "Update" :"અપડેટ કરો"
+
+}
