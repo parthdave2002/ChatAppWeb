@@ -1,0 +1,27 @@
+{
+    "welcome": "Welcome",
+    "description": "description",
+
+    "Notification": "Notification",
+
+    "Setting": "Setting",
+    "Theme" : "Theme",
+    "English" : "English",
+    "France" : "France",
+    "Gujarati" : "Gujarati",
+    "Hindi" : "Hindi",
+    "German"  : "German",
+    "Spanish"  : "Spanish",
+
+    "Group": "Group",
+    "People" : "People",
+    
+    "Name" : "Name",
+    "Email" : "Email",
+    "Contact" : "Contact",
+    "Current Password" : "Current Password",
+    "New Password" : "New Password",
+    "Confirm Password" : "Confirm Password",
+    "Cancel" : "Cancel",
+    "Update" :"Update"
+  }

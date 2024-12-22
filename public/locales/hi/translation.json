@@ -1,0 +1,28 @@
+{
+    "welcome": "स्वागत",
+    "description": "विवरण",
+
+    "Notification" : "अधिसूचना",
+
+    "Setting": "सेटिंग",
+    "Theme" : "विषय",
+    "English" : "अंग्रेज़ी",
+    "France" : "फ्रांस",
+    "Gujarati" : "गुजराती",
+    "Hindi" : "हिंदी",
+    "German"  : "जर्मन",
+    "Spanish"  : "स्पैनिश",
+    
+    "Group": "समूह",
+    "People" : "लोग",
+    
+    "Name" : "नाम",
+    "Email" : "ईमेल",
+    "Contact" : "संपर्क",
+    "Current Password" : "वर्तमान पासवर्ड",
+    "New Password" : "नया पासवर्ड",
+    "Confirm Password" : "पासवर्ड की पुष्टि कीजिये",
+    "Cancel" : "रद्द करना",
+    "Update" :"अपडेट"
+
+}

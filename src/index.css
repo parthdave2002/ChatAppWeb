@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.adminDasboardCard{
+    @apply bg-gray-100 hover:bg-gray-300 shadow-xl dark:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-white dark:border-gray-800 flex flex-col  border border-gray-300 rounded-md justify-items-center px-3 gap-3 p-2 w-[13rem] h-[5rem]
+  }
+
+.adminDasboardCardHeader{
+    @apply lg:text-[1rem] lg:font-semibold  xl:text-[1rem] xl:font-bold text-center
+}
+
+.adminDasboardCardDetail{
+    @apply lg:text-[1.5rem] lg:font-semibold  xl:text-[1rem] xl:font-bold  text-center leading-4
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
