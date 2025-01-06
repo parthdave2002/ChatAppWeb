@@ -7,7 +7,6 @@ interface ProfileProps {
     CloseCall :  () => void;
 }
 
-
 const Profile: FC <ProfileProps> = function ({CloseCall}) {
 
     const { t  } = useTranslation();
@@ -27,6 +26,7 @@ const Profile: FC <ProfileProps> = function ({CloseCall}) {
                     <div> {t("Contact")} : Parth Dave </div>
                 </div>
                 <div className="flex justigy-end gap-x-[1rem] dark:text-gray-50 " >
+              
                     <div className="cursor-pointer" onClick={CloseCall}> {t("Cancel")} </div>
                     <div className="cursor-pointer"> {t("Update")} </div>
                 </div>

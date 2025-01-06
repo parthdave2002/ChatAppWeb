@@ -4,8 +4,11 @@ import { HiMenu } from "react-icons/hi";
 import { MdOutlineClose  } from "react-icons/md";
 import { useNavigate } from "react-router";
 import { DarkThemeToggle } from "flowbite-react";
+import { useTranslation } from "react-i18next";
 
 const Header: FC = function () {
+
+  const { t } = useTranslation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
@@ -66,7 +69,7 @@ const Header: FC = function () {
               <div className="lg:flex items-center gap-3 hidden dark:text-gray-400 text-gray-600 ">
                       {MainData.map((data: any, index: number) => (
                         <div key={index} className="cursor-pointer dark:hover:text-gray-100 hover:text-gray-900  py-2 px-4" onClick={() => RedictCall(data.url)}>
-                          {data.name}
+                          {t(data.name)}
                         </div>
                       ))}
               </div>
@@ -74,7 +77,7 @@ const Header: FC = function () {
               <div className="lg:flex items-center gap-2 hidden dark:text-gray-400 text-gray-600">
                       {SubData.map((data: any, index: number) => (
                         <div key={index} className="cursor-pointer dark:hover:text-gray-100 hover:text-gray-900 py-2 px-2" onClick={() => RedictCall(data.url)}>
-                          {data.name}
+                          {t(data.name)}
                         </div>
                       ))}
 
@@ -90,12 +93,12 @@ const Header: FC = function () {
                 <div className="mt-4 bg-body p-4 rounded-lg text-gray-800 dark:text-gray-100  cursor-pointer  flex flex-col gap-y-4">
                         {MainData.map((data: any, index: number) => (
                           <div key={index} className="cursor-pointer hover:text-gray-100 block" onClick={() => RedictCall(data.url)}>
-                            {data.name}
+                            {t(data.name)}
                           </div>
                         ))}
                         {SubData.map((data: any, index: number) => (
                         <div key={index} className="cursor-pointer hover:text-gray-100 block" onClick={() => RedictCall(data.url)}>
-                          {data.name}
+                          {t(data.name)}
                         </div>
                       ))}
                 </div>

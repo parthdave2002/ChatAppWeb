@@ -12,6 +12,8 @@ import TermsCondition from './pages/Cms/TermCondition';
 import PrivacyPolicy from './pages/Cms/PrivacyPolicy';
 import Chat from './pages/Client/Chat/Chat';
 import Floatingbot from './components/Floatingbot/Floatingbot';
+import NonAuthLayout from './layout/NonAuthLayout';
+import OTPPage from './pages/Auth/OTP';
 
 const App: FC = function() {
 
@@ -21,16 +23,17 @@ const App: FC = function() {
         <Routes>
 
             {/* ------------------------ Common Pages  ------------------------ */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/forgotpassword" element={<ForgotPassword />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="*" element={<PageNotFound />} />
-            <Route path="/terms" element={<TermsCondition />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/login"  element={<NonAuthLayout><Login /></NonAuthLayout>} /> 
+            <Route path="/OTP"  element={<NonAuthLayout><OTPPage /></NonAuthLayout>} /> 
+            <Route path="/forgotpassword" element={<NonAuthLayout><ForgotPassword /></NonAuthLayout>}/>
+            <Route path="/signup"  element={<NonAuthLayout><Signup /></NonAuthLayout>} />
+            <Route path="*"  element={<NonAuthLayout><PageNotFound /></NonAuthLayout>}  />
+            <Route path="/terms" element={<NonAuthLayout><TermsCondition /></NonAuthLayout>}  />
+            <Route path="/privacy" element={<NonAuthLayout><PrivacyPolicy /></NonAuthLayout>}  />
 
             {/* ------------------------ Client Pages  ------------------------ */}
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/" element={<NonAuthLayout><Home /></NonAuthLayout>} />
+            <Route path="/about"element={<NonAuthLayout><About /></NonAuthLayout>} />
             <Route path="/chat" element={<Chat />} />
 
             {/* ------------------------- Admin Pages------------------------ */}

@@ -50,7 +50,7 @@ const Signup : FC = function()  {
 
     //   ------- Forgot password code start -------------
       const Alredyhave = () => {
-        navigation("/");
+        navigation("/login");
       };
     //   ------- Forgot password code end -------------
 
