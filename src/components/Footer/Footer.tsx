@@ -2,18 +2,19 @@ import {  FC } from 'react';
 import { useNavigate } from 'react-router';
 import Logo from "../../../public/vite.svg";
 import { FaFacebookF, FaGithub, FaInstagram } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const Footer : FC = function()  {
-
-  const navigate = useNavigate();
+    const { t  } = useTranslation();
+    const navigate = useNavigate();
 
   const Footerlink = [
     {
-      name: "Terms & Condition",
+      name: "Terms & condition",
       url: "/terms",
     },
     {
-      name: "Privacy Policy",
+      name: "Privacy policy",
       url: "/privacy",
     },
   ]
@@ -28,8 +29,6 @@ const Footer : FC = function()  {
       url: "/about",
     },
   ];
-
-
 
   const RedictCall = (data: string) => {
     navigate(data);
@@ -46,7 +45,7 @@ const Footer : FC = function()  {
           <div className="flex gap-x-[2rem] md:gap-x-[1rem] justify-center self-center">
               {MainData.map((data: any, index: number) => (
                 <div key={index} className="cursor-pointer hover:text-gray-100 " onClick={() => RedictCall(data.url)}>
-                  {data.name}
+                  {t(data.name)}
                 </div>
               ))}
           </div>
@@ -64,13 +63,13 @@ const Footer : FC = function()  {
                 <div className="flex gap-x-4 justify-center md:justify-start  self-center">   
                     {Footerlink.map((data: any, index: number) => (
                       <div key={index} className="cursor-pointer hover:text-gray-100 " onClick={() => RedictCall(data.url)}>
-                        {data.name}
+                        {t(data.name)}
                       </div>
                     ))}
                 </div>
 
                 <div className='flex justify-center text-sm md:text-base text-center  self-center'>
-                      <div className='hover:text-gray-100'> © Copyright 2024. All Rights Reserved. </div>
+                      <div className='hover:text-gray-100'> © {t("Copyright 2024. All Rights Reserved")}. </div>
                 </div>
           </div>
     </div>

@@ -1,134 +1,115 @@
-import {useState , FC} from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Form, Input, FormFeedback } from "reactstrap";
-import { Button, Card, Checkbox, DarkThemeToggle, Label  } from "flowbite-react";
-import { FaUser,FaLock  } from "react-icons/fa";
-import { useNavigate } from "react-router";
-import { useDispatch } from 'react-redux';
-import {insertlogin} from "../../Store/actions"
-import Footer from '../../components/Footer/Footer';
+import FacebookImg from "../../assets/facebook.png"
+import googleSvg from '../../assets/google.png';
+import imagePreview from "../../assets/contact-us.png";
 
-const Login : FC = function()  {
-  const navigation = useNavigate();
-  const dispatch = useDispatch();
+const Login = () => {
 
-    const validation = useFormik({
-        // enableReinitialize : use this flag when initial values needs to be changed
-        enableReinitialize: true,
-    
-        initialValues: {
-          email: "",
-          password: "",
-        },
-    
-        validationSchema: Yup.object({
-          email: Yup.string().email("Enter Valid Email id").required("Please Enter Email"),
-          password: Yup.string().required("Please Enter Password"),
-        }),
-        onSubmit: (values) => {
-          dispatch(insertlogin(values));
-          // dispatch(loginintolaravel(values));
-          validation.resetForm();
-        },
-      });
+  const navigate = useNavigate();
+  const [checked, setChecked] = useState(false);
+  const handlecheckCall = () =>{
+    setChecked(!checked)
+  }
 
-    //   ------- GetData from reducer code start -------------
-    //   const [Login, setLogin] = useState(false);
-    //   const [LoginRols, setLoginRols] = useState([]);
-    
-    //   const { login } = useSelector((state:any) => ({
-    //     login: state.Login.Logincode,
-    //   }));
+  const SignUpCall = () => {
+    navigate("/signup")
+  }
 
-    //   useEffect(() => {
-    //     setLogin(login ? login.success : null);
-    //     setLoginRols(login.data ? login.data.roles : null);
-    //   }, [login]);
-    //   ------- GetData from reducer code end -------------
+  const validation = useFormik({
+    // enableReinitialize : use this flag when initial values needs to be changed
+    enableReinitialize: true,
 
-    //   ------- Forgot password code start -------------
-      const LostPassword = () => {
-        navigation("/forgotpassword");
-      };
-    //   ------- Forgot password code end -------------
+    initialValues: {
+      email: "",
+      password: "",
+    },
 
-    //   ------- Create New Acconut code start -------------
-    const CreateAcc = () =>{
-        navigation("/signup");
-    }
-    //   ------- Create New Acconut code start -------------
-
+    validationSchema: Yup.object({
+      email: Yup.string().email("Enter valid email").required("Please enter email"),
+      password: Yup.string().required("Please enter password"),
+    }),
+    onSubmit: (values) => {
+      console.log("values >>>>>>>>>", values);
+      // dispatch(insertlogin(values));
+      navigate("/otp")
+      validation.resetForm();
+    },
+  });
+   
   return (
-      <div className="flex flex-col items-center justify-center lg:gap-y-6 bg-[#eff6fc] dark:bg-gray-900 ">
-        <Card  className="lg:min-w-[30rem] p-3 lg:max-w-screen-xl md:max-w-screen-md [&>img]:hidden md:[&>img]:w-[31rem] md:[&>img]:p-0 md:[&>*]:w-full md:[&>*]:p-16 lg:[&>img]:block " >
-                  <h1 className="mb-3 text-2xl font-bold dark:text-white md:text-3xl text-center">  Sign in  </h1>
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+      <div className="max-w-4xl w-full bg-white rounded-lg shadow-md">
+          <div className='flex flex-col-reverse md:flex-row'>
+              <div className='flex-1'>
+                  <img src={imagePreview} className='h-full' />
+              </div>
+              
+              <div className='flex-1 p-8'>
+                <h2 className="text-[2.5rem] font-bold text-[#554bc7] mb-4"> Welcome back </h2>
+                <Form className="space-y-4"   onSubmit={(e) => { e.preventDefault(); validation.handleSubmit(); return false; }}>
+                  <div className='flex flex-col'>
+                        <label className='text-gray-500 font-semibold'>Email</label>
+                        <Input name="email" type='email' placeholder="Enter your email" onChange={validation.handleChange} onBlur={validation.handleBlur} value={validation.values.email || ""} invalid={  validation.touched.email && validation.errors.email ? true  : false } className='rounded-xl px-4 py-2 focus:ring-[#554bc7] focus:ring-1 focus:outline-none border border-gray-200 ' />
+                        {validation.touched.email && validation.errors.email ? ( <FormFeedback type="invalid" className="text-red-500 text-[0.9rem]">  {validation.errors.email}  </FormFeedback> ) : null}
+                  </div>
 
-                  <Form
-                      onSubmit={(e) => {
-                          e.preventDefault();
-                          validation.handleSubmit();
-                          return false;
-                      }}
-                  >
-                  <div className="mb-4 flex flex-col gap-y-3 relative shadow-xl bg-blue-100  dark:bg-gray-700 rounded-md">
-                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"> <FaUser  className="w-6 h-6 text-gray-500 dark:text-gray-400" /> </div>
+                  <div className='flex flex-col'>
+                        <label className='text-gray-500 font-semibold'>Password</label>
+                        <Input name="password" type='password' placeholder="Enter your password" onChange={validation.handleChange} onBlur={validation.handleBlur}  value={validation.values.password || ""} invalid={  validation.touched.password && validation.errors.password  ? true  : false  } className='rounded-xl px-4 py-2 focus:ring-[#554bc7] focus:ring-1 focus:outline-none border border-gray-200 ' />
+                        {validation.touched.password && validation.errors.password ? ( <FormFeedback type="invalid" className="text-red-500 text-[0.9rem]">  {validation.errors.password} </FormFeedback> ) : null}
+                  </div>
 
+                  <div className="flex items-center justify-between">
+                    <label className="inline-flex items-center text-sm text-gray-600">
                       <Input
-                      name="email"
-                      className="lg:ml-[3rem] bg-blue-100 border-0 focus:ring-0 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-blue-500 dark:placeholder-gray-400 dark:text-white disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-500 p-2.5 rounded-lg text-gray-900 text-xl"
-                      placeholder="Email"
-                      type="text"
-                      onChange={validation.handleChange}
-                      onBlur={validation.handleBlur}
-                      value={validation.values.email || ""}
-                      invalid={  validation.touched.email && validation.errors.email ? true  : false }
+                        type="checkbox"
+                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        onChange={handlecheckCall}
+                        defaultChecked={checked}
                       />
-                  </div>
-                  {validation.touched.email && validation.errors.email ? ( <FormFeedback type="invalid" className="text-red-500">   {validation.errors.email}  </FormFeedback> ) : null}
+                      <span className="ml-2 text-gray-500 font-semibold">Remember me</span>
+                    </label>
 
-
-                  <div className="mb-6 flex flex-col gap-y-3 relative shadow-xl bg-blue-100  dark:bg-gray-700 rounded-md">
-                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none rounded-r-md"> <FaLock    className="w-6 h-6 text-gray-500 dark:text-gray-400" /> </div>
-                      
-                      <Input
-                      id="password"
-                      className="lg:ml-[3rem] bg-blue-100 border-0 focus:ring-0 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-blue-500 dark:placeholder-gray-400 dark:text-white disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-500 p-2.5 rounded-lg text-gray-900 text-xl"
-                      name="password"
-                      placeholder="••••••••"
-                      type="password"
-                      onChange={validation.handleChange}
-                      onBlur={validation.handleBlur}
-                      value={validation.values.password || ""}
-                      invalid={  validation.touched.password && validation.errors.password  ? true  : false  }
-                      />
-                  </div>
-                  {validation.touched.password && validation.errors.password ? ( <FormFeedback type="invalid" className="text-red-500">  {validation.errors.password} </FormFeedback> ) : null}
-
-                  <div className="mb-6 flex items-center justify-between">
-                      <div className="flex items-center gap-x-3">
-                      <Checkbox id="rememberMe" name="rememberMe" />
-                      <Label htmlFor="rememberMe" className='lg:text-[1rem]'>Remember me</Label>
-                      </div>
-
-                      <div onClick={() => {  LostPassword(); }} className="w-1/2 cursor-pointer text-right text-sm dark:text-gray-200 lg:text-[1rem]" >  Forgot Password?   </div>
-
+                    <a href="/forgotpassword" className="text-sm text-blue-600 hover:underline"> Forgot password? </a>
                   </div>
 
-                  <div className="mb-6 slef-center align-center">
-                      <Button type="submit" className="lg:w-[15rem]  bg-gradient-to-r from-purple-500 to-pink-500 mx-[4rem]">   Login </Button>
-                  </div>
+                  <button type="submit" className="w-full px-4 py-2 text-white bg-[#554bc7] rounded-lg hover:bg-[#4536f1cf] focus:ring-4 focus:ring-blue-300" > Log In </button>
+                </Form>
 
+                <div className="flex items-center my-4">
+                  <div className="flex-grow border-t border-gray-300"></div>
+                  <span className="px-4 text-sm text-gray-500">or login with</span>
+                  <div className="flex-grow border-t border-gray-300"></div>
+                </div>
 
-                  <p className=" text-gray-500 dark:text-gray-300 text-center cursor-pointer text-md" onClick={() => CreateAcc()}> Not registered?&nbsp;
-                      <a  className="text-primary-600 dark:text-primary-300 text-lg">   Create account  </a>
-                  </p>
-                  </Form>
-        </Card>
+                <div className="md:flex gap-x-3 mt-4 space-y-2 max-h-[2rem] items-center justify-center self-center">
+                  <button  type="button" className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 rounded-lg hover:bg-gray-300" >
+                    <img  src={FacebookImg} alt="Facebook" className="w-5 h-5 mr-2" />
+                    <div className='md:text-[0.8rem]'>Log in with Facebook </div>
+                  </button>
 
-        <Footer />
+                  <button type="button" className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 rounded-lg hover:bg-gray-300 flex-grow">
+                    <img src={googleSvg} alt="Google" className="w-5 h-5 mr-2" />
+                    <div className="md:text-[0.8rem]">Log in with Google</div>
+                  </button> 
+                </div>
+
+                <div className="flex items-center justify-center mt-4">
+                    <div className="text-gray-500 font-semibold">
+                      <span className="ml-2">i don't have account, </span>
+                      <span className="hover:text-blue-600  cursor-pointer" onClick={() => SignUpCall()}> Signup</span>
+                    </div>
+                </div>
+              </div>
+          </div>
       </div>
+    </div>
   )
 }
 
-export default Login;
+export default Login
