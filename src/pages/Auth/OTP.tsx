@@ -26,9 +26,9 @@ const OTPPage = () => {
 
   return (
     <div className="flex p-[1rem] md:p-[4rem] items-center justify-center bg-gray-100 dark:bg-darkacardcolor">
-      <div className="w-full max-w-sm p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800">Verify OTP</h2>
-        <p className="text-sm text-center text-gray-600">Enter the 4-digit code sent to your email.</p>
+      <div className="w-full max-w-md p-8 space-y-6 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-2xl">
+        <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-50">Verify OTP</h2>
+        <p className="text-sm text-center text-gray-600 dark:text-gray-400">Enter the 4-digit code sent to your email.</p>
 
         <div className="flex justify-center space-x-2">
           {otp.map((digit, index) => (
@@ -39,7 +39,7 @@ const OTPPage = () => {
               maxLength={1}
               value={digit}
               onChange={(e) => handleChange(e.target.value, index)}
-              className="w-12 h-12 text-center text-lg font-medium text-gray-800 bg-gray-100 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              className="w-12 h-12 text-center text-lg font-medium text-gray-800 dark:text-gray-50 bg-gray-100 dark:bg-gray-800 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
             />
           ))}
         </div>
