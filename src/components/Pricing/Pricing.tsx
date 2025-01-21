@@ -1,131 +1,183 @@
-import { FC } from "react";
-import { FaCheck } from "react-icons/fa";
+import React, { FC, useState } from 'react';
+import { BsPatchCheckFill } from "react-icons/bs";
+import FAQPage from '../FAQ/FAQ';
 
-const Pricing: FC = function () {
+const Pricing: FC = () => {
 
-    const tiers = [
+    const [isAnnual, setIsAnnual] = useState(false);
+
+    const FreePlan = [
         {
-          name: 'Hobby',
-          id: 'tier-hobby',
-          href: '#',
-          priceMonthly: '$29',
-          description: "The perfect plan if you're just getting started with our product.",
-          features: ['25 products', 'Up to 10,000 subscribers', 'Advanced analytics', '24-hour support response time'],
-          featured: false,
+            name:"Unlimited chat"
         },
         {
-          name: 'Enterprise',
-          id: 'tier-enterprise',
-          href: '#',
-          priceMonthly: '$99',
-          description: 'Dedicated support and infrastructure for your company.',
-          features: [
-            'Unlimited products',
-            'Unlimited subscribers',
-            'Advanced analytics',
-            'Dedicated support representative',
-            'Marketing automations',
-            'Custom integrations',
-          ],
-          featured: true,
+            name:"Unlimited group create"
         },
-      ]
-      
-      function classNames(...classes: any) {
-        return classes.filter(Boolean).join(' ')
-      }
+        {
+            name:"Limited video call"
+        },
+        {
+            name:"Limited audio call"
+        },
+        {
+            name:"Profile update"
+        },
+        {
+            name:"Multiple language support"
+        },
+        
+    ]
 
-  return (
-            <div className=" flex relative focus:ring-0  border-0 w-full  min:h-screen">
-              <div className="relative isolate bg-white dark:bg-darkacardcolor px-6 py-24 sm:py-28 lg:px-8 mx-auto">
-                <div aria-hidden="true" className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl">
-                  <div
-                    style={{
-                      clipPath:
-                        'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                    }}
-                    className="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
-                  />
-                </div>
-                <div className="mx-auto max-w-4xl text-center">
-                 
-                  <p className="mt-2 text-balance text-[2rem] font-semibold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-100">
-                    Choose the right plan for you
-                  </p>
-                </div>
-                <p className="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-600 sm:text-xl/8">
-                  Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer
-                  loyalty, and driving sales.
-                </p>
-                <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
-                  {tiers.map((tier, tierIdx) => (
-                    <div
-                      key={tier.id}
-                      className={classNames(
-                        tier.featured ? 'relative bg-gray-900 shadow-2xl' : 'bg-gray-100 sm:mx-8 lg:mx-0',
-                        tier.featured
-                          ? ''
-                          : tierIdx === 0
-                            ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-bl-3xl lg:rounded-tr-none'
-                            : 'sm:rounded-t-none lg:rounded-bl-none lg:rounded-tr-3xl',
-                        'rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10',
-                      )}
+    const ProPlan = [
+        {
+            name:"Unlimited group chat"
+        },
+        {
+            name:"Unlimited personal chat"
+        },
+        {
+            name:"Unlimited group create"
+        },
+        {
+            name:"Unlimited audio call"
+        },
+        {
+            name:"Unlimited video call"
+        },
+        {
+            name:"Profile update"
+        },
+        {
+            name:"Multiple language support"
+        },
+        
+    ]
+
+    const EnterprisePlan = [
+        {
+            name:"Unlimited group Chat"
+        },
+        {
+            name:"Unlimited personal Chat"
+        },
+        {
+            name:"Unlimited group create"
+        },
+        {
+            name:"Unlimited audio call"
+        },
+        {
+            name:"Unlimited video call"
+        },
+        {
+            name:"Profile update"
+        },
+        {
+            name:"Multiple Language support"
+        },
+        {
+            name:"Notification setting"
+        },
+    ]
+
+    return (
+        <>
+            <div className="bg-gray-100 dark:bg-darkbackgoundcolor  min-h-screen  items-center justify-center p-8">
+                <h2 className="text-[2.5rem] font-bold text-[#554bc7] text-center"> Plans and Pricing </h2>
+                <h2 className="text-[1rem] font-semibold text-[#554bc7] mb-4 text-center"> Receive unlimited credits when you pay yearly, and save on your plan.</h2>
+
+                <div className="flex justify-center items-center space-x-2 bg-gray-100 dark:bg-darkacardcolor  rounded-full p-2 w-80 mx-auto mb-4">
+                    
+                    <button
+                        onClick={() => setIsAnnual(false)}
+                        className={`flex-1 p-2 text-center rounded-full transition-all ${
+                        !isAnnual
+                            ? "bg-white text-black shadow"
+                            : "text-gray-500 hover:text-black  dark:text-gray-50 dark:hover:text-gray-100"
+                        }`}
                     >
-                      <h3
-                        id={tier.id}
-                        className={classNames(tier.featured ? 'text-indigo-400' : 'text-indigo-600', 'text-base/7 font-semibold')}
-                      >
-                        {tier.name}
-                      </h3>
-                      <p className="mt-4 flex items-baseline gap-x-2">
-                        <span
-                          className={classNames(
-                            tier.featured ? 'text-white' : 'text-gray-900',
-                            'text-5xl font-semibold tracking-tight',
-                          )}
-                        >
-                          {tier.priceMonthly}
-                        </span>
-                        <span className={classNames(tier.featured ? 'text-gray-400' : 'text-gray-500', 'text-base')}>/month</span>
-                      </p>
-                      <p className={classNames(tier.featured ? 'text-gray-300' : 'text-gray-600', 'mt-6 text-base/7')}>
-                        {tier.description}
-                      </p>
-                      <ul
-                        role="list"
-                        className={classNames(
-                          tier.featured ? 'text-gray-300' : 'text-gray-600',
-                          'mt-8 space-y-3 text-sm/6 sm:mt-10',
-                        )}
-                      >
-                        {tier.features.map((feature) => (
-                          <li key={feature} className="flex gap-x-3">
-                            <FaCheck
-                              aria-hidden="true"
-                              className={classNames(tier.featured ? 'text-indigo-400' : 'text-indigo-600', 'h-6 w-5 flex-none')}
-                            />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <a
-                        href={tier.href}
-                        aria-describedby={tier.id}
-                        className={classNames(
-                          tier.featured
-                            ? 'bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500'
-                            : 'text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300 focus-visible:outline-indigo-600',
-                          'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
-                        )}
-                      >
-                        Get started today
-                      </a>
-                    </div>
-                  ))}
+                        Monthly
+                    </button>
+                    
+                    <button
+                        onClick={() => setIsAnnual(true)}
+                        className={`flex-1 p-2 text-center rounded-full transition-all ${
+                        isAnnual
+                            ? "bg-white text-black shadow"
+                            : "text-gray-500 hover:text-black dark:text-gray-50 dark:hover:text-gray-100"
+                        }`}
+                    >
+                        Annual <span className="text-green-500 font-medium">Save 20%</span>
+                    </button>
                 </div>
-              </div>
+
+                <div className='flex flex-col md:flex-row gap-4'>
+                    <div className='max-w-4xl p-4 min-h-[30rem] w-full bg-gray-50 dark:bg-darkacardcolor rounded-lg shadow-md flex flex-col justify-between'> 
+                        <div>
+                                <div className='flex justify-between dark:text-gray-50'> 
+                                    <div className='text-[1.3rem] font-semibold self-center'>Free </div>
+                                    <div className='text-[2rem] font-semibold'> $0 </div>
+                                </div>
+                    
+                                <div className='my-3 flex flex-col gap-y-4'>
+                                    {FreePlan && FreePlan.map((item:any) =>(
+                                        <div className='flex gap-x-[1.5rem]'>
+                                        <div className='justify-center self-center'><BsPatchCheckFill className='fill-green-800 h-[1.3rem] w-[1.3rem] dark:fill-green-400' /></div>
+                                        <div className='dark:text-gray-200'> {item.name}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                        </div>
+                        <button type="button" className="w-full border border-gray-800 hover:border-[#4536f1cf] mt-4 px-4 py-2 shadow-lg shadow-indigo-500/40 hover:text-white bg-gray-100 rounded-lg hover:bg-[#554bc7] " > Get started for Free </button>     
+                    </div>
+
+                    <div className='max-w-4xl p-4 min-h-[30rem] w-full bg-gray-50 dark:bg-darkacardcolor rounded-lg shadow-md flex flex-col justify-between'> 
+                        <div>
+                                <div className='flex justify-between dark:text-gray-50'> 
+                                    <div className='text-[1.3rem] font-semibold self-center'> Pro <span className="inline-flex items-center rounded-full bg-[#554bc7] px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-red-600/10"> Recommended </span> </div>
+                                    <div className='text-[2rem] font-semibold'> {isAnnual ?  "$77" : "$8" } </div>
+                                </div>
+                    
+                                <div className='my-3 flex flex-col gap-y-4'>
+                                    {ProPlan && ProPlan.map((item:any) =>(
+                                        <div className='flex gap-x-[1.5rem]'>
+                                        <div className='justify-center self-center'><BsPatchCheckFill className='fill-green-800 h-[1.3rem] w-[1.3rem]  dark:fill-green-400' /></div>
+                                        <div  className='dark:text-gray-200'> {item.name}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                        </div>
+                        <button type="button" className="w-full border border-gray-800 hover:border-[#4536f1cf] mt-4 px-4 py-2 shadow-lg shadow-indigo-500/40 text-white bg-gray-800 rounded-lg hover:bg-[#554bc7] " > Get started with Pro </button>
+                    </div>
+
+                    <div className='max-w-4xl p-4 min-h-[30rem] w-full bg-gray-50 dark:bg-darkacardcolor rounded-lg shadow-md flex flex-col justify-between'> 
+                        <div>
+                                <div className='flex justify-between dark:text-gray-50 '> 
+                                    <div className='text-[1.3rem] font-semibold self-center'> Enterprise </div>
+                                    <div className='text-[2rem] font-semibold'>  {isAnnual ?  "$115" : "$12" }</div>
+                                </div>
+                    
+                                <div className='my-3 flex flex-col gap-y-4'>
+                                    {EnterprisePlan && EnterprisePlan.map((item:any) =>(
+                                        <div className='flex gap-x-[1.5rem]'>
+                                        <div className='justify-center self-center'><BsPatchCheckFill className='fill-green-800 h-[1.3rem] w-[1.3rem]  dark:fill-green-400' /></div>
+                                        <div className='dark:text-gray-200'> {item.name}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                        </div>
+                        <button type="button" className="w-full border border-gray-800 hover:border-[#4536f1cf] mt-4 px-4 py-2 shadow-lg shadow-indigo-500/40 hover:text-white bg-gray-100 rounded-lg hover:bg-[#554bc7] " > Get started with Enterprise </button>     
+                    </div>
+
+
+                
+                </div>
+
             </div>
-  );
+
+            <FAQPage />
+        </>
+    )
 };
 
 export default Pricing;

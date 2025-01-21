@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import User from './pages/Admin/User/User'
 import Login from './pages/Auth/Login';
-import ForgotPasswordPage from './pages/Auth/Signup';
+import ForgotPasswordPage from './pages/Auth/ForgotPassword';
 import Signup from './pages/Auth/Signup';
 import PageNotFound from './common/PageNotFound';
 import Home from './pages/Client/Home/Home';
@@ -14,6 +14,8 @@ import Chat from './pages/Client/Chat/Chat';
 import NonAuthLayout from './layout/NonAuthLayout';
 import OTPPage from './pages/Auth/OTP';
 import ContacUsPage from './pages/Client/ContactUs/ContacUs';
+import Pricing from './components/Pricing/Pricing';
+import FAQPage from './components/FAQ/FAQ';
 
 
 const App: FC = function() {
@@ -34,6 +36,8 @@ const App: FC = function() {
 
             {/* ------------------------ Client Pages  ------------------------ */}
             <Route path="/" element={<NonAuthLayout><Home /></NonAuthLayout>} />
+            <Route path="/pricing" element={<NonAuthLayout><Pricing /></NonAuthLayout>} />
+            <Route path="/faq" element={<NonAuthLayout><FAQPage /></NonAuthLayout>} />
             <Route path="/contactus" element={<NonAuthLayout><ContacUsPage /></NonAuthLayout>} />
             <Route path="/about"element={<NonAuthLayout><About /></NonAuthLayout>} />
             <Route path="/chat" element={<Chat />} />
