@@ -12,7 +12,8 @@ module.exports = withMT({
       Cultured : "#F5F5FA",
       darkbackgoundcolor  : "#040019",
       darkacardcolor : "#110d24",
-      themecolor : "#2d87c8"
+      themecolor : "#2d87c8",
+      newthemecolor: "#554bc7"
     },
     extend: {
       animation: {

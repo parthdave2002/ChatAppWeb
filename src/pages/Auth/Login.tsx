@@ -16,6 +16,10 @@ const Login = () => {
     setChecked(!checked)
   }
 
+  const Forgotcall = () =>{
+    navigate("/forgotpassword")
+  }
+
   const SignUpCall = () => {
     navigate("/signup")
   }
@@ -42,25 +46,25 @@ const Login = () => {
   });
    
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-      <div className="max-w-4xl w-full bg-white rounded-lg shadow-md">
+    <div className="bg-gray-100 dark:bg-darkbackgoundcolor min-h-screen flex items-center justify-center">
+      <div className="max-w-4xl w-full bg-gray-50  dark:bg-darkacardcolor rounded-lg shadow-md">
           <div className='flex flex-col-reverse md:flex-row'>
               <div className='flex-1'>
                   <img src={imagePreview} className='h-full' />
               </div>
               
               <div className='flex-1 p-8'>
-                <h2 className="text-[2.5rem] font-bold text-[#554bc7] mb-4"> Welcome back </h2>
+                <h2 className="text-[2.5rem] font-bold text-newthemecolor mb-4"> Welcome back </h2>
                 <Form className="space-y-4"   onSubmit={(e) => { e.preventDefault(); validation.handleSubmit(); return false; }}>
                   <div className='flex flex-col'>
-                        <label className='text-gray-500 font-semibold'>Email</label>
-                        <Input name="email" type='email' placeholder="Enter your email" onChange={validation.handleChange} onBlur={validation.handleBlur} value={validation.values.email || ""} invalid={  validation.touched.email && validation.errors.email ? true  : false } className='rounded-xl px-4 py-2 focus:ring-[#554bc7] focus:ring-1 focus:outline-none border border-gray-200 ' />
+                        <label className='text-gray-500 font-semibold dark:text-gray-100'>Email</label>
+                        <Input name="email" type='email' placeholder="Enter your email" onChange={validation.handleChange} onBlur={validation.handleBlur} value={validation.values.email || ""} invalid={  validation.touched.email && validation.errors.email ? true  : false } className='rounded-xl px-4 py-2 focus:ring-newthemecolor focus:ring-1 focus:outline-none border border-gray-200 ' />
                         {validation.touched.email && validation.errors.email ? ( <FormFeedback type="invalid" className="text-red-500 text-[0.9rem]">  {validation.errors.email}  </FormFeedback> ) : null}
                   </div>
 
                   <div className='flex flex-col'>
-                        <label className='text-gray-500 font-semibold'>Password</label>
-                        <Input name="password" type='password' placeholder="Enter your password" onChange={validation.handleChange} onBlur={validation.handleBlur}  value={validation.values.password || ""} invalid={  validation.touched.password && validation.errors.password  ? true  : false  } className='rounded-xl px-4 py-2 focus:ring-[#554bc7] focus:ring-1 focus:outline-none border border-gray-200 ' />
+                        <label className='text-gray-500 font-semibold dark:text-gray-100'>Password</label>
+                        <Input name="password" type='password' placeholder="Enter your password" onChange={validation.handleChange} onBlur={validation.handleBlur}  value={validation.values.password || ""} invalid={  validation.touched.password && validation.errors.password  ? true  : false  } className='rounded-xl px-4 py-2 focus:ring-newthemecolor focus:ring-1 focus:outline-none border border-gray-200 ' />
                         {validation.touched.password && validation.errors.password ? ( <FormFeedback type="invalid" className="text-red-500 text-[0.9rem]">  {validation.errors.password} </FormFeedback> ) : null}
                   </div>
 
@@ -72,18 +76,18 @@ const Login = () => {
                         onChange={handlecheckCall}
                         defaultChecked={checked}
                       />
-                      <span className="ml-2 text-gray-500 font-semibold">Remember me</span>
+                      <span className="ml-2 text-gray-500 font-semibold dark:text-gray-100">Remember me</span>
                     </label>
 
-                    <a href="/forgotpassword" className="text-sm text-blue-600 hover:underline"> Forgot password? </a>
+                    <div className="text-sm text-blue-600 hover:underline cursor-pointer" onClick={() =>Forgotcall()}> Forgot password ? </div>
                   </div>
 
-                  <button type="submit" className="w-full px-4 py-2 text-white bg-[#554bc7] rounded-lg hover:bg-[#4536f1cf] focus:ring-4 focus:ring-blue-300" > Log In </button>
+                  <button type="submit" className="w-full px-4 py-2 text-white bg-newthemecolor rounded-lg hover:bg-[#4536f1cf] focus:ring-4 focus:ring-blue-300" > Log In </button>
                 </Form>
 
                 <div className="flex items-center my-4">
                   <div className="flex-grow border-t border-gray-300"></div>
-                  <span className="px-4 text-sm text-gray-500">or login with</span>
+                  <span className="px-4 text-sm text-gray-500 dark:text-gray-100">or login with</span>
                   <div className="flex-grow border-t border-gray-300"></div>
                 </div>
 
@@ -100,7 +104,7 @@ const Login = () => {
                 </div>
 
                 <div className="flex items-center justify-center mt-4">
-                    <div className="text-gray-500 font-semibold">
+                    <div className="text-gray-500 dark:text-gray-100 font-semibold">
                       <span className="ml-2">i don't have account, </span>
                       <span className="hover:text-blue-600  cursor-pointer" onClick={() => SignUpCall()}> Signup</span>
                     </div>
